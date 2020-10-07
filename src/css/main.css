@@ -1,5 +1,12 @@
 @import "./reset.css";
 
+:root {
+  --ivory: #f8efd4;
+  --moca: #edc988;
+  --pink: #d7385e;
+  --indigo: #132743;
+}
+
 * {
   box-sizing: border-box;
 }
