@@ -5,6 +5,7 @@
   --white: #ffffff;
   --black: #050505;
   --main-color: #f9c413;
+  --app-height: 500px;
 }
 
 * {
@@ -32,12 +33,12 @@ body {
   transform: translate(-50%, -50%);
   display: grid;
   grid-template-rows:/**/
-    [app__main-logo] 2fr
-    [app__select-color] 1fr
-    [app__products] 7fr;
+    [app__main-logo] 20%
+    [app__select-color] 10%
+    [app__products] 70%;
   width: 400px;
   min-width: 279px;
-  min-height: 500px;
+  min-height: var(--app-height);
   background-color: white;
   padding: 1rem;
   border-radius: 1rem;
@@ -53,7 +54,7 @@ body {
 }
 
 .app__main-logo__image {
-  width: 100px;
+  width: calc(var(--app-height) / 5); /* 앱 그리드에서 [app__main-logo] 의 높이 : 20% */
   height: 100%;
   max-height: inherit;
   background: url(../img/logo.png) no-repeat center/100%;
