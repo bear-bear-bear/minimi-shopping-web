@@ -37,7 +37,7 @@ body {
     [app__products] 7fr;
   width: 400px;
   min-width: 279px;
-  min-height: 400px;
+  min-height: 500px;
   background-color: white;
   padding: 1rem;
   border-radius: 1rem;
@@ -53,10 +53,10 @@ body {
 }
 
 .app__main-logo__image {
-  width: 80px;
+  width: 100px;
   height: 100%;
   max-height: inherit;
-  background: url(../img/logo.png) no-repeat center/contain;
+  background: url(../img/logo.png) no-repeat center/100%;
 }
 
 .app__select-color {
