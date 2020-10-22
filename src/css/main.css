@@ -45,6 +45,8 @@ body {
   box-shadow: 5px 10px 25px -5px var(--black);
 }
 
+/* -------------------------------------------------------------- */
+/* ------------------ section [app__main-logo] ------------------ */
 .app__main-logo {
   position: relative;
   display: flex;
@@ -60,12 +62,16 @@ body {
   background: url(../img/logo.png) no-repeat center/100%;
 }
 
+/* -------------------------------------------------------------- */
+/* ------------------ section [app__select-color] ------------------ */
 .app__select-color {
   justify-self: right;
   display: flex;
   align-items: center;
 }
 
+/* -------------------------------------------------------------- */
+/* ------------------ section [app__products] ------------------ */
 .app__products {
   justify-self: left;
   width: 100%;
