@@ -107,6 +107,7 @@ body {
 /* **-------- end media query --------** */
 
 /* **--------for dev--------** */
+.app,
 .app__main-logo,
 .app__select-color,
 .app__products {
