@@ -81,6 +81,7 @@ body {
     width: 100%;
     height: 100%;
     border-radius: initial;
+    box-shadow: inset 0 0.4rem 0 var(--main-color);
   }
   .app__main-logo__image {
     min-width: 130px;
