@@ -1,10 +1,8 @@
 @import "./reset.css";
 
 :root {
-  --ivory: #f8efd4;
-  --moca: #edc988;
-  --pink: #d7385e;
-  --indigo: #132743;
+  --white: #ffffff;
+  --black: #050505;
 }
 
 * {
@@ -21,21 +19,32 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: var(--ivory);
+  background: #fd746c; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #ff9068, #fd746c); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #ff9068,
+    #fd746c
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  filter: grayscale(10%);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell,
     "Open Sans", "Helvetica Neue", sans-serif;
 }
 
 .app {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   display: grid;
   grid-template-rows:/**/
-    [app__main-logo] 2fr
-    [app__select-color] 1fr
+    [app__main-logo] auto
+    [app__select-color] auto
     [app__products] 70%;
-  min-width: 279px;
   width: 400px;
+  min-width: 279px;
   min-height: 400px;
-  background-color: var(--moca);
+  background-color: white;
   padding: 1rem;
   border-radius: 1rem;
 }
@@ -60,6 +69,7 @@ body {
 .app__products {
   justify-self: left;
   width: 100%;
+  background-color: var(--white);
 }
 
 /* **-------- start media query --------** */
@@ -75,6 +85,7 @@ body {
   }
   .app__main-logo__image {
     width: 20vw;
+    min-width: 130px;
     height: auto;
   }
 }
@@ -82,9 +93,6 @@ body {
 @media screen and (max-width: 768px) {
   html {
     font-size: 21px;
-  }
-  .app__main-logo__image {
-    width: 154px;
   }
 }
 
