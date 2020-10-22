@@ -4,6 +4,7 @@
 :root {
   --white: #ffffff;
   --black: #050505;
+  --main-color: #f9c413;
 }
 
 * {
@@ -20,7 +21,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #f9c413;
+  background: var(--main-color);
   font-family: Roboto, Noto Sans KR, sans-serif, Apple SD Gothic Neo;
 }
 
