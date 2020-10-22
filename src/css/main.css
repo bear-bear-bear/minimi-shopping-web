@@ -38,26 +38,31 @@ body {
   transform: translate(-50%, -50%);
   display: grid;
   grid-template-rows:/**/
-    [app__main-logo] auto
-    [app__select-color] auto
-    [app__products] 70%;
+    [app__main-logo] 2fr
+    [app__select-color] 1fr
+    [app__products] 7fr;
   width: 400px;
   min-width: 279px;
   min-height: 400px;
   background-color: white;
   padding: 1rem;
   border-radius: 1rem;
+  box-shadow: 5px 10px 25px -5px var(--black);
 }
 
 .app__main-logo {
-  justify-self: center;
+  position: relative;
   display: flex;
+  justify-content: center;
   align-items: center;
+  width: 100%;
 }
 
 .app__main-logo__image {
-  width: 100%;
+  width: 80px;
   height: 100%;
+  max-height: inherit;
+  background: url(../img/logo.png) no-repeat center/contain;
 }
 
 .app__select-color {
@@ -84,9 +89,7 @@ body {
     border-radius: initial;
   }
   .app__main-logo__image {
-    width: 20vw;
     min-width: 130px;
-    height: auto;
   }
 }
 
@@ -107,7 +110,7 @@ body {
 /* **-------- end media query --------** */
 
 /* **--------for dev--------** */
-.app,
+.app__main-logo__image,
 .app__main-logo,
 .app__select-color,
 .app__products {
