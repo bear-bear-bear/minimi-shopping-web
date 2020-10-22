@@ -48,7 +48,6 @@ body {
 /* -------------------------------------------------------------- */
 /* ------------------ section [app__main-logo] ------------------ */
 .app__main-logo {
-  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -56,7 +55,7 @@ body {
 }
 
 .app__main-logo__image {
-  width: calc(var(--app-height) / 5); /* 앱 그리드에서 [app__main-logo] 의 높이 : 20% */
+  width: calc(var(--app-height) / 4.4); /* 앱 높이에 비례 */
   height: 100%;
   max-height: inherit;
   background: url(../img/logo.png) no-repeat center/100%;
@@ -65,9 +64,31 @@ body {
 /* -------------------------------------------------------------- */
 /* ------------------ section [app__select-color] ------------------ */
 .app__select-color {
-  justify-self: right;
+  position: relative;
+  justify-self: stretch;
+  display: grid;
+  grid-template-columns: [image-box] auto [color-select-btns] 1fr;
+}
+
+.app__select-color__image-box {
   display: flex;
   align-items: center;
+}
+
+.app__select-color__image-list {
+  display: flex;
+}
+
+.app__select-color__image {
+  margin-left: 0.5rem;
+}
+
+.app__select-color__image {
+  height: 2rem;
+}
+
+.app__select-color__btn-list {
+  display: flex;
 }
 
 /* -------------------------------------------------------------- */
@@ -112,10 +133,13 @@ body {
 /* **-------- end media query --------** */
 
 /* **--------for dev--------** */
-.app__main-logo__image,
 .app__main-logo,
 .app__select-color,
 .app__products {
   border: 1px solid black;
+}
+
+.app__select-color__image-box {
+  background-color: #ddd;
 }
 /* **--------for dev--------** */
