@@ -33,9 +33,9 @@ body {
   transform: translate(-50%, -50%);
   display: grid;
   grid-template-rows:/**/
-    [app__main-logo] 20%
-    [app__select-color] 10%
-    [app__products] 70%;
+    [app__main-logo] 18.72%
+    [app__select-color] 9.36%
+    [app__products] 1fr;
   width: 400px;
   min-width: 279px;
   min-height: var(--app-height);
@@ -58,7 +58,7 @@ body {
 .app__main-logo__image {
   width: 9rem;
   height: 100%;
-  max-height: inherit;
+  /* max-height: inherit; */
 }
 
 .app__main-logo__text {
@@ -152,6 +152,7 @@ body {
 .app__products {
   justify-self: left;
   width: 100%;
+  margin-top: 0.5rem;
   background-color: var(--white);
 }
 
@@ -178,19 +179,19 @@ body {
 
 @media screen and (max-width: 768px) {
   html {
-    font-size: 18px;
+    font-size: 20px;
   }
 }
 
 @media screen and (max-width: 520px) {
   html {
-    font-size: 16px;
+    font-size: 19px;
   }
 }
 
 @media screen and (max-width: 440px) {
   html {
-    font-size: 15px;
+    font-size: 18px;
   }
 
   .app__select-color {
@@ -203,11 +204,16 @@ body {
   }
 }
 
-@media (max-height: 399px) and (orientation: landscape) {
+@media (max-width: 440px) and (orientation: landscape) {
   .app {
-    min-height: 0;
-    width: 100%;
-    height: 100%;
+    min-height: initial;
+    grid-template-rows:/**/
+      [app__select-color] fit-content
+      [app__products] 1fr;
+  }
+
+  .app__main-logo {
+    display: none;
   }
 }
 
