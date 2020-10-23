@@ -58,6 +58,7 @@ body {
   width: calc(var(--app-height) / 4.4); /* 앱 높이에 비례 */
   height: 100%;
   max-height: inherit;
+  background: var(--main-color);
   background: url(../img/logo.png) no-repeat center/100%;
 }
 
