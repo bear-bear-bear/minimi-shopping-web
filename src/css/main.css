@@ -83,14 +83,55 @@ body {
   margin-left: 0.5rem;
 }
 
-.app__select-color__image {
-  height: 2rem;
+.app__select-color__image--t-shirt {
+  background: url(../img/blue_t.png) no-repeat center/100%;
+}
+
+.app__select-color__image--pants {
+  background: url(../img/yellow_p.png) no-repeat center/100%;
+}
+
+.app__select-color__image--skirt {
+  background: url(../img/pink_s.png) no-repeat center/100%;
+}
+
+.app__select-color__color-box {
+  display: flex;
+  justify-content: flex-end;
 }
 
 .app__select-color__btn-list {
   display: flex;
+  align-items: center;
+  padding: 0 0.3em;
 }
 
+.app__select-color__btn {
+  width: 2em;
+  height: 2em;
+  margin: 0 0.2em;
+  border-radius: 0.4em;
+  cursor: pointer;
+  box-shadow: 0.02em 0.05em 0.15em -0.04em var(--black);
+  transition: filter 0.1s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.app__select-color__btn:hover,
+.app__select-color__btn:focus {
+  filter: grayscale(10%) contrast(70%);
+}
+
+.app__select-color__btn--blue {
+  background: #54aeef;
+}
+
+.app__select-color__btn--yellow {
+  background: #ffd602;
+}
+
+.app__select-color__btn--pink {
+  background: #fe8489;
+}
 /* -------------------------------------------------------------- */
 /* ------------------ section [app__products] ------------------ */
 .app__products {
