@@ -9,6 +9,7 @@
   </head>
   <body>
     <article class="app">
+      <!-- 메인 로고 섹션 -->
       <section class="app__main-logo">
         <svg class="app__main-logo__image" viewBox="0 0 100 100">
           <circle class="logo__circle" cx="20" cy="28" r="15" fill="#ffd602" />
@@ -17,6 +18,7 @@
         </svg>
         <span class="app__main-logo__text">Minimi!</span>
       </section>
+      <!-- 색상 선택 섹션-->
       <section class="app__select-color">
         <div class="app__select-color__image-box">
           <ul class="app__select-color__image-list">
@@ -33,13 +35,40 @@
             </ul>
         </div>
       </section>
+      <!-- 제품 정보 섹션 -->
       <section class="app__products">
-        <ul class="app__products__items">
+        <!-- 제품 리스트 -->
+        <ul class="app__products__list">
           <li class="app__products__item">
             <section class="app__products__item__image"></section>
-            <section class="app__products__item__desc"></section>
+            <section class="app__products__item__desc">
+              <div class="app_products__item__name">파란색 질긴 바지</div>
+              <div class="app__products__item__gender-size">man, small size</div>
+            </section>
+          </li>
+          <li class="app__products__item">
+            <section class="app__products__item__image"></section>
+            <section class="app__products__item__desc">
+              <div class="app_products__item__name">노란색 부드러운 바지</div>
+              <div class="app__products__item__gender-size">female, small size</div>
+            </section>
+          </li>
+          <li class="app__products__item">
+            <section class="app__products__item__image"></section>
+            <section class="app__products__item__desc">
+              <div class="app_products__item__name">파란색 부드러운 치마</div>
+              <div class="app__products__item__gender-size">female, big size</div>
+            </section>
+          </li>
+          <li class="app__products__item">
+            <section class="app__products__item__image"></section>
+            <section class="app__products__item__desc">
+              <div class="app_products__item__name">분홍색 질긴 티셔츠</div>
+              <div class="app__products__item__gender-size">man, big size</div>
+            </section>
           </li>
         </ul>
+        <!-- 페이지네이션 -->
         <div class="app__products__inner-paging">
           <ul class="app__products__page-numbers">
             <li class="app__products__page-number app__products__page-number--current">1</li>
