@@ -152,8 +152,8 @@ body {
   grid-template-columns: [image-box] 1fr [color-select-btns] 1fr;
   opacity: 0;
   top: 0.5rem;
-  animation: raiseUp 0.6s ease-in forwards;
-  animation-delay: 1.5s;
+  animation: raiseUp 0.5s ease-in forwards;
+  animation-delay: 1.75s;
 }
 
 @keyframes raiseUp {
@@ -248,6 +248,9 @@ body {
   padding-bottom: 0;
   background-color: var(--white);
   border-top: 6px solid #bbbbbb;
+  animation: raiseUp 0.5s ease-in forwards;
+  animation-delay: 1.5s;
+  opacity: 0;
 }
 
 .app__products__list {
@@ -258,13 +261,18 @@ body {
 }
 
 .app__products__item {
-  position: relative;
   display: grid;
   grid-template-columns: [item__image] 6rem [item__desc] 1fr;
   margin: 0.3rem 0.6rem;
   border-radius: 0.3rem;
   background-color: white;
-  z-index: 10;
+  box-shadow: 0.01em 0.02em 0.15em -0.04em var(--black);
+  cursor: pointer;
+}
+
+.app__products__item:hover,
+.app__products__item:focus {
+  filter: contrast(90%);
 }
 
 .app__products__item__image {
