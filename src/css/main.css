@@ -156,6 +156,18 @@ body {
   background-color: var(--white);
 }
 
+.app__products__items {
+}
+
+.app__products__item {
+}
+
+.app__products__item__image {
+}
+
+.app__products__item__desc {
+}
+
 /* **-------- start media query --------** */
 
 @media (max-width: 1023px) {
@@ -221,7 +233,11 @@ body {
 
 /* **--------for dev--------** */
 .app__products {
-  border: 1px solid black;
+  border-top: 0.2px solid black;
 }
 
+.app__products__page-btn {
+  width: 1.3rem;
+  height: 1.3rem;
+}
 /* **--------for dev--------** */
