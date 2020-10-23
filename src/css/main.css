@@ -42,7 +42,7 @@ body {
   background-color: white;
   padding: 1rem;
   border-radius: 1rem;
-  box-shadow: 5px 10px 25px -5px var(--black);
+  box-shadow: 5px 6px 20px -5px var(--black);
 }
 
 /* -------------------------------------------------------------- */
@@ -65,9 +65,9 @@ body {
 /* ------------------ section [app__select-color] ------------------ */
 .app__select-color {
   position: relative;
-  justify-self: stretch;
+  width: 100%;
   display: grid;
-  grid-template-columns: [image-box] auto [color-select-btns] 1fr;
+  grid-template-columns: [image-box] 1fr [color-select-btns] 1fr;
 }
 
 .app__select-color__image-box {
@@ -77,10 +77,15 @@ body {
 
 .app__select-color__image-list {
   display: flex;
+  padding: 0 0.3em;
 }
 
 .app__select-color__image {
-  margin-left: 0.5rem;
+  position: relative;
+  display: block;
+  width: 2em;
+  height: 2em;
+  margin: 0 0.2em;
 }
 
 .app__select-color__image--t-shirt {
@@ -159,7 +164,28 @@ body {
 
 @media screen and (max-width: 768px) {
   html {
-    font-size: 21px;
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 440px) {
+  html {
+    font-size: 15px;
+  }
+
+  .app__select-color {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .app__select-color__image-box {
+    display: none;
   }
 }
 
@@ -174,13 +200,8 @@ body {
 /* **-------- end media query --------** */
 
 /* **--------for dev--------** */
-.app__main-logo,
-.app__select-color,
 .app__products {
   border: 1px solid black;
 }
 
-.app__select-color__image-box {
-  background-color: #ddd;
-}
 /* **--------for dev--------** */
