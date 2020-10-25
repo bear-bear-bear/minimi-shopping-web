@@ -5,13 +5,12 @@
   --white: #f5f5f5;
   --black: #1a1a1a;
   --main-color: linear-gradient(to right, #ece9e6, #ffffff);
-  --app-height: 500px;
+  --app-height: 700px;
 }
 
 * {
   box-sizing: border-box;
 }
-
 html,
 body {
   width: 100%;
@@ -36,7 +35,7 @@ body {
     [app__main-logo] 18.72%
     [app__select-color] 9.36%
     [app__products] 1fr;
-  width: 400px;
+  width: 500px;
   min-width: 279px;
   min-height: var(--app-height);
   background: white;
