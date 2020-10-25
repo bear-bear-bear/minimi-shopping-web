@@ -153,7 +153,7 @@ body {
   opacity: 0;
   top: 0.5rem;
   animation: raiseUp 0.5s ease-in forwards;
-  animation-delay: 1.75s;
+  animation-delay: 1.7s;
 }
 
 @keyframes raiseUp {
