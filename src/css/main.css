@@ -181,18 +181,19 @@ body {
   width: 2em;
   height: 2em;
   margin: 0 0.2em;
+  background: center/100% no-repeat;
 }
 
 .app__select-color__image--t-shirt {
-  background: url(../img/blue_t.png) no-repeat center/100%;
+  background-image: url(../img/blue_t.png);
 }
 
 .app__select-color__image--pants {
-  background: url(../img/yellow_p.png) no-repeat center/100%;
+  background-image: url(../img/yellow_p.png);
 }
 
 .app__select-color__image--skirt {
-  background: url(../img/pink_s.png) no-repeat center/100%;
+  background-image: url(../img/pink_s.png);
 }
 
 .app__select-color__color-box {
@@ -222,15 +223,15 @@ body {
 }
 
 .app__select-color__btn--blue {
-  background: #54aeef;
+  background-color: #54aeef;
 }
 
 .app__select-color__btn--yellow {
-  background: #ffd602;
+  background-color: #ffd602;
 }
 
 .app__select-color__btn--pink {
-  background: #fe8489;
+  background-color: #fe8489;
 }
 /* -------------------------------------------------------------- */
 /* ------------------ section [app__products] ------------------ */
