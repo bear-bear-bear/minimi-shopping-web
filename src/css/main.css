@@ -218,6 +218,7 @@ body {
 .app__select-color__btn:hover,
 .app__select-color__btn:focus {
   filter: grayscale(10%) contrast(70%);
+  border-radius: 0.55em;
 }
 
 .app__select-color__btn--blue {
