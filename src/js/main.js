@@ -1,4 +1,4 @@
-import { fakeProductsData as fakeData } from "./createFakeData";
+import { fakeProductsData as fakeData } from "./createFakeData.js";
 
 class Clothes {
   constructor(category, gender, size, material, color) {

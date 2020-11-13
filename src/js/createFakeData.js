@@ -1,4 +1,4 @@
-import { productsOptions } from "./productsOptions";
+import { productsOptions } from "./productsOptions.js";
 
 const NUMBER_OF_PRODUCTS = 100;
 
