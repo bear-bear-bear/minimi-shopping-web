@@ -16,3 +16,27 @@ const reqCurrentPageData = (currPage, dataNumPerPage) => {
 
   return currentPageData; // 데이터 반환
 };
+
+/* --------------------------------------------------------------------------------------- */
+/* 클라이언트 단에서 현재 페이지 넘버와 함께 데이터를 요청하는 부분을 가정한 구현 */
+/* --------------------------------------------------------------------------------------- */
+const PRODUCTS_NUM_PER_PAGE = 4; // 한 페이지에 표시되는 데이터 수
+let currentPage = 1; // 현재 페이지 - default = page 1
+
+function getProductsList() {}
+
+const handlePageClick = (e) => {
+  let pageNum = e.target;
+  if (pageNum.tagName !== "LI" || pageNum.textContent == currentPage) return; // 클릭된게 번호가 아니거나 현재 페이지 번호라면 종료
+
+  getProductsList(pageNum);
+};
+
+window.onload = () => {
+  getProductsList(currentPage);
+
+  const pageNumbers = document.querySelector(".app__products__page-numbers");
+  pageNumbers.addEventListener("click", handlePageClick);
+};
+
+// 클라이언트 단에서 해당 데이터를 받아 정제과정을 거친 후 화면에 출력
