@@ -23,7 +23,40 @@ const reqCurrentPageData = (currPage, dataNumPerPage) => {
 const PRODUCTS_NUM_PER_PAGE = 4; // 한 페이지에 표시되는 데이터 수
 let currentPage = 1; // 현재 페이지 - default = page 1
 
-function getProductsList() {}
+// 클라이언트 단에서 표시되는 데이터의 형식
+class ProductElement {
+  constructor(dataObj) {
+    /* 제품 정보 DOM 형식 */
+  }
+
+  getNode() {
+    // return this.li;
+  }
+}
+
+const processData = (data) => {
+  let product = new ProductElement(data);
+
+  return product.getNode();
+};
+
+const getProductsData = (pageNum) => {
+  const getData = (pageNumber) => reqCurrentPageData(pageNumber, PRODUCTS_NUM_PER_PAGE); // 이동할 페이지의 데이터를 요청하는 함수
+
+  currentPage = !isNaN(pageNum) ? pageNum : pageNum.textContent; // 클릭한 페이지 번호로 전역변수 currentPage를 설정하고
+
+  return getData(currentPage); // 현재 페이지 번호로 데이터를 요청하여 반환
+};
+
+const getProductsList = (pageNum) => {
+  let currProductsData = getProductsData(pageNum);
+  console.log("-- 현재 페이지의 데이터 리스트");
+  console.log(currProductsData);
+
+  let currProductsElem = currProductsData.map((productData) => processData(productData));
+  console.log("-- 현재 페이지의 데이터를 가공한 결과");
+  console.log(currProductsElem);
+};
 
 const handlePageClick = (e) => {
   let pageNum = e.target;
