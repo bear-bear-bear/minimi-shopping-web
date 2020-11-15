@@ -26,11 +26,30 @@ let currentPage = 1; // 현재 페이지 - default = page 1
 // 클라이언트 단에서 표시되는 데이터의 형식
 class ProductElement {
   constructor(dataObj) {
-    /* 제품 정보 DOM 형식 */
+    this.li = document.createElement("li");
+    this.li.classList.add("app__products__item");
+
+    this.section1 = document.createElement("section");
+    this.section2 = document.createElement("section");
+    this.section1.classList.add("app__products__item__image");
+    this.section2.classList.add("app__products__item__desc");
+
+    this.li.appendChild(this.section1);
+    this.li.appendChild(this.section2);
+
+    this.div1 = document.createElement("section");
+    this.div2 = document.createElement("section");
+    this.div1.classList.add("app_products__item__name");
+    this.div1.classList.add("app_products__item__gender-size");
+    this.div1.innerText = `${dataObj.gender}, ${dataObj.size}`;
+    this.div2.innerText = `${dataObj.color} ${dataObj.material} ${dataObj.category}`;
+
+    this.section2.appendChild(this.div1);
+    this.section2.appendChild(this.div2);
   }
 
   getNode() {
-    // return this.li;
+    return this.li;
   }
 }
 
@@ -48,25 +67,34 @@ const getProductsData = (pageNum) => {
   return getData(currentPage); // 현재 페이지 번호로 데이터를 요청하여 반환
 };
 
-const getProductsList = (pageNum) => {
-  let currProductsData = getProductsData(pageNum);
-  console.log("-- 현재 페이지의 데이터 리스트");
-  console.log(currProductsData);
-
-  let currProductsElem = currProductsData.map((productData) => processData(productData));
-  console.log("-- 현재 페이지의 데이터를 가공한 결과");
-  console.log(currProductsElem);
+const clearInnerElement = (elem) => {
+  elem.innerHTML = "";
 };
+
+const putProductsList = (pageNum) => {
+  const productsList = document.querySelector(".app__products__list");
+
+  clearInnerElement(productsList);
+
+  let productsData = getProductsData(pageNum);
+  let productsElem = productsData.map((productData) => processData(productData));
+
+  for (let productElem of productsElem) {
+    productsList.appendChild(productElem);
+  }
+};
+
+const removeProductsList = () => {};
 
 const handlePageClick = (e) => {
   let pageNum = e.target;
   if (pageNum.tagName !== "LI" || pageNum.textContent == currentPage) return; // 클릭된게 번호가 아니거나 현재 페이지 번호라면 종료
 
-  getProductsList(pageNum);
+  putProductsList(pageNum);
 };
 
 window.onload = () => {
-  getProductsList(currentPage);
+  putProductsList(currentPage);
 
   const pageNumbers = document.querySelector(".app__products__page-numbers");
   pageNumbers.addEventListener("click", handlePageClick);
