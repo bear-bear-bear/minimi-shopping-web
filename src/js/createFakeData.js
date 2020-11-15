@@ -1,3 +1,5 @@
+/* 상품 옵션을 받아서 랜덤 데이터 생성 */
+// TODO: 특정 버튼을 눌렀을때만 새로운 데이터를 생성하도록 변경하기 (현재는 새로고침 할때마다 데이터가 변경되어버림)
 import { productsOptions } from "./productsOptions.js";
 
 const NUMBER_OF_PRODUCTS = 100;
