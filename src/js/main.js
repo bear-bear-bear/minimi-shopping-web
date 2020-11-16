@@ -14,7 +14,7 @@ const reqCurrentPageData = (currPage, dataNumPerPage) => {
     currentPageData.push(DB[i]);
   }
 
-  return currentPageData; // 데이터 반환
+  return JSON.stringify(currentPageData); // 데이터 json 형식으로 반환
 };
 
 /* --------------------------------------------------------------------------------------- */
@@ -76,15 +76,13 @@ const putProductsList = (pageNum) => {
 
   clearInnerElement(productsList);
 
-  let productsData = getProductsData(pageNum);
-  let productsElem = productsData.map((productData) => processData(productData));
+  let productsData = JSON.parse(getProductsData(pageNum)); // json 형식의 데이터를 파싱
+  let productsElem = productsData.map((productData) => processData(productData)); // 파싱된 데이터를 DOM 엘리먼트 형식으로 가공
 
   for (let productElem of productsElem) {
-    productsList.appendChild(productElem);
+    productsList.appendChild(productElem); // 상품리스트 ul에 가공한 상품데이터 추가
   }
 };
-
-const removeProductsList = () => {};
 
 const handlePageClick = (e) => {
   let pageNum = e.target;
@@ -97,7 +95,7 @@ window.onload = () => {
   putProductsList(currentPage);
 
   const pageNumbers = document.querySelector(".app__products__page-numbers");
-  pageNumbers.addEventListener("click", handlePageClick);
+  pageNumbers.addEventListener("click", handlePageClick, false);
 };
 
 // 클라이언트 단에서 해당 데이터를 받아 정제과정을 거친 후 화면에 출력
