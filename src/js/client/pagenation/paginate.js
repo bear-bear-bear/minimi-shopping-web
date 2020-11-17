@@ -2,7 +2,7 @@
 /* 클라이언트 단에서 현재 페이지 넘버와 함께 데이터를 요청하는 부분을 가정한 구현 */
 /* --------------------------------------------------------------------------------------- */
 /* Module */
-const request = require("../../server/server.js"); // 현재 페이지의 상품 데이터를 가져올 수 있는 험수 request()
+const request = require("../../fakeServer/fakeServer.js"); // 현재 페이지의 상품 데이터를 가져올 수 있는 험수 request()
 const process = require("./_process.js"); // 파싱된 json 데이터를 가공하여 node element로 반환하는 함수 process()
 
 /* Variables */
