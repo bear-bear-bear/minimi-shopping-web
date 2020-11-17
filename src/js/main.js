@@ -1,7 +1,7 @@
 /* --------------------------------------------------------------------------------------- */
 /* 서버단에서 현재 페이지 넘버에 따라 DB에서 데이터를 가져와서 응답하는 부분을 가정한 구현 */
 /* --------------------------------------------------------------------------------------- */
-import { fakeProductsData as DB } from "./createFakeData.js"; // 가상 데이터 객체를 DataBase 라고 가정
+const DB = require("./createFakeData.js"); // 가상 데이터 객체를 DataBase 라고 가정
 
 const reqCurrentPageData = (currPage, dataNumPerPage) => {
   console.log(`[ page ${currPage} ]`); // test
