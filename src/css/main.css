@@ -1,5 +1,4 @@
 @import "./reset.css";
-@import "./font.css";
 
 :root {
   --white: #f5f5f5;
@@ -11,6 +10,7 @@
 * {
   box-sizing: border-box;
 }
+
 html,
 body {
   width: 100%;
@@ -22,7 +22,7 @@ body {
   justify-content: center;
   align-items: center;
   background: var(--main-color);
-  font-family: Roboto, Noto Sans KR, sans-serif, Apple SD Gothic Neo;
+  font-family: Roboto, sans-serif, Apple SD Gothic Neo;
 }
 
 .app {
