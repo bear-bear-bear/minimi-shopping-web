@@ -5,11 +5,9 @@ const productsOptions = require("./_productsOptions.js");
 const NUMBER_OF_PRODUCTS = 100;
 
 const createFakeData = (options) => {
-  let fakeData = {};
-
-  fakeData = toArray(options).map((elem) => {
-    let key = elem[0];
-    let randomElem = getRandomElem(elem[1]);
+  const fakeData = toArray(options).map((elem) => {
+    const key = elem[0];
+    const randomElem = getRandomElem(elem[1]);
     return [key, randomElem];
   });
 
@@ -24,7 +22,7 @@ const createFakeData = (options) => {
   }
 
   function getRandomElem(arr) {
-    let randomIndex = getRandomNum(arr.length);
+    const randomIndex = getRandomNum(arr.length);
     return arr[randomIndex];
   }
 

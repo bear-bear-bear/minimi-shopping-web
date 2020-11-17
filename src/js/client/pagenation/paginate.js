@@ -27,8 +27,8 @@ const putProductsList = (pageNum) => {
 
   clearInnerElement(productsList); // 상품리스트 초기화
 
-  let productsData = JSON.parse(getProductsData(pageNum)); // json 형식의 데이터를 파싱
-  let productsElem = productsData.map((productData) => process(productData)); // 파싱된 데이터를 DOM 엘리먼트 형식으로 가공
+  const productsData = JSON.parse(getProductsData(pageNum)); // json 형식의 데이터를 파싱
+  const productsElem = productsData.map((productData) => process(productData)); // 파싱된 데이터를 DOM 엘리먼트 형식으로 가공
 
   for (let productElem of productsElem) {
     productsList.appendChild(productElem); // 상품리스트에 가공한 상품데이터를 차례대로 추가
@@ -36,7 +36,7 @@ const putProductsList = (pageNum) => {
 };
 
 const handlePageClick = (e) => {
-  let pageNum = e.target;
+  const pageNum = e.target;
   if (pageNum.tagName !== "LI" || pageNum.textContent == currentPage) return; // 클릭된게 번호가 아니거나 현재 페이지의 번호라면 종료
 
   putProductsList(pageNum);

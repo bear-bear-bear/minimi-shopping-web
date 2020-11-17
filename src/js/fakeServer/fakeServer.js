@@ -6,8 +6,8 @@ const DB = require("./_createFakeData.js"); // 가상 데이터 객체를 DataBa
 const reqCurrentPageData = (currPage, dataNumPerPage) => {
   console.log(`[ page ${currPage} ]`); // test
 
-  let offset = (currPage - 1) * dataNumPerPage; // 표시할 데이터 중 첫번째 데이터의 좌표
-  let currentPageData = [];
+  const offset = (currPage - 1) * dataNumPerPage; // 표시할 데이터 중 첫번째 데이터의 좌표
+  const currentPageData = [];
 
   // 현재 좌표에서 시작하여 설정된 숫자만큼의 데이터 가져오기
   for (let i = offset; i < offset + dataNumPerPage; i++) {
