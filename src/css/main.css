@@ -370,20 +370,6 @@ body {
 .app__products__page-btn--disabled {
   display: none;
 }
-/* **--------for dev--------** */
-
-.app__products__item:nth-child(1) .app__products__item__image {
-  background-image: url(../img/blue_p.png);
-}
-.app__products__item:nth-child(2) .app__products__item__image {
-  background-image: url(../img/yellow_p.png);
-}
-.app__products__item:nth-child(3) .app__products__item__image {
-  background-image: url(../img/blue_s.png);
-}
-.app__products__item:nth-child(4) .app__products__item__image {
-  background-image: url(../img/pink_t.png);
-}
 
 /* **--------for dev--------** */
 
