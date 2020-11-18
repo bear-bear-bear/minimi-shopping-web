@@ -49,4 +49,5 @@ const getPageData = () => {
   pageNumbers.addEventListener("click", handlePageClick, false); // 페이지네이션의 숫자 클릭시에 해당 페이지의 데이터 호출
 };
 
+/* export */
 module.exports = getPageData;

@@ -1,3 +1,6 @@
+// index.html 파일 기준 이미지 디렉터리 경로
+const IMG_DIR_PATH = "./src/img/";
+
 // 클라이언트 단에서 표시되는 데이터의 형식
 const dataToElement = (dataObj) => {
   const li = document.createElement("li");
@@ -20,6 +23,13 @@ const dataToElement = (dataObj) => {
 
   section2.appendChild(div1);
   section2.appendChild(div2);
+
+  const setImage = (color, category) => {
+    // 색상과 카테고리에 맞는 이미지 세팅
+    section1.style.backgroundImage = `url(${IMG_DIR_PATH}${color}_${category[0]}.png)`;
+  };
+
+  setImage(dataObj.color, dataObj.category);
 
   return li;
 };
