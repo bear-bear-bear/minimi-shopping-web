@@ -18,21 +18,17 @@ const getProductsData = (pageNum) => {
   return getData(currentPage); // 현재 페이지 번호로 데이터를 요청하여 반환
 };
 
-const clearInnerElement = (elem) => {
-  elem.innerHTML = "";
-};
-
 const putProductsList = (pageNum) => {
   const productsList = document.querySelector(".app__products__list"); // 상품리스트
 
-  clearInnerElement(productsList); // 상품리스트 초기화
+  productsList.innerHTML = ""; // 상품리스트 초기화
 
   const productsData = JSON.parse(getProductsData(pageNum)); // json 형식의 데이터를 파싱
-  const productsElem = productsData.map((productData) => process(productData)); // 파싱된 데이터를 DOM 엘리먼트 형식으로 가공
+  const productsElem = productsData
+    .map((productData) => process(productData))
+    .reduce((allProductElem, productElem) => allProductElem.concat(productElem));
 
-  for (let productElem of productsElem) {
-    productsList.appendChild(productElem); // 상품리스트에 가공한 상품데이터를 차례대로 추가
-  }
+  productsList.innerHTML = productsElem;
 };
 
 const handlePageClick = (e) => {
