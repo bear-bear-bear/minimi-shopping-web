@@ -332,14 +332,14 @@ body {
   background-color: #cccccc;
 }
 
-.app__products__page-number--current {
+.app__products__page-number--highlight {
   font-size: 1.6rem;
   font-weight: 700;
   cursor: initial;
 }
 
-.app__products__page-number--current:hover,
-.app__products__page-number--current:focus {
+.app__products__page-number--highlight:hover,
+.app__products__page-number--highlight:focus {
   background-color: inherit;
 }
 
