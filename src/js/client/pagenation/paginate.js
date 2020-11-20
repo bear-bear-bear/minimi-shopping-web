@@ -7,6 +7,7 @@ const process = require("./_process.js"); // 파싱된 json 데이터를 가공�
 
 /* Variables */
 const PRODUCTS_NUM_PER_PAGE = 4; // 한 페이지에 표시되는 데이터 수
+const PAGE_NUMBER_HIGHLIGHT_CLASSNAME = "app__products__page-number--highlight"; // css 파일에서 페이지 넘버 강조 스타일이 적용된 클래스 네임
 let currentPageNumber = 1; // 현재 페이지 - default = page 1
 
 /* Function */
@@ -22,7 +23,7 @@ const toggleHighlightPageNumber = (pageNumber) => {
   const pageNumbers = Array.from(document.querySelector(".app__products__page-numbers").children); // 페이지네이션
 
   const currPageNumber = pageNumbers[pageNumber - 1]; // 현재 페이지 인덱스는 입력한 페이지 숫자 인수의 - 1
-  currPageNumber.classList.toggle("app__products__page-number--highlight");
+  currPageNumber.classList.toggle(PAGE_NUMBER_HIGHLIGHT_CLASSNAME);
 };
 
 const putProductsList = (pageNum) => {
