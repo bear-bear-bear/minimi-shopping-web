@@ -14,8 +14,10 @@ let currentPageNumber = 1; // 현재 페이지 - default = page 1
 const getProductsData = (pageNumber) => {
   const getData = (pageNum) => request(pageNum, PRODUCTS_NUM_PER_PAGE); // 이동할 페이지의 데이터를 요청하는 함수
 
-  currentPageNumber = !isNaN(pageNumber) ? pageNumber : pageNumber.textContent; // 클릭한 페이지 번호로 전역변수 currentPageNumber를 설정하고
-
+  currentPageNumber = !isNaN(pageNumber)
+    ? pageNumber
+    : pageNumber.textContent; /* 클릭한 페이지 번호로 전역변수 currentPageNumber를 설정하고
+                              (pageNumber가 숫자라면 그대로, element라면 textContent로 값 삽입) */
   return getData(currentPageNumber); // 현재 페이지 번호로 데이터를 요청하여 반환
 };
 
@@ -46,11 +48,17 @@ const putProductsList = (pageNum) => {
 const handlePaginationBtnsClick = (e) => {
   const clickedBtn = e.target;
 
-  if (clickedBtn.tagName === "svg") console.log("clicked move button!");
-
-  if (clickedBtn.tagName !== "LI" || clickedBtn.textContent == currentPageNumber) return; // 클릭된게 번호가 아니거나 현재 페이지의 번호라면 종료
-
-  putProductsList(clickedBtn);
+  switch (clickedBtn.tagName) {
+    case "svg": // 클릭된 것이 페이지 이동 버튼이라면
+      console.log("clicked move button!");
+      break;
+    case "LI": // 클릭된 것이 페이지 번호라면
+      if (clickedBtn.textContent == currentPageNumber) break; // 현재 페이지 번호일땐 아무동작도 하지 않고 종료
+      putProductsList(clickedBtn); // 해당 번호의 데이터 불러오기
+      break;
+    default:
+      return;
+  }
 };
 
 const getPageData = () => {
