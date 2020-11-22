@@ -34,6 +34,7 @@ const process = require("./_process.js"); // 파싱된 json 데이터를 가공�
 
 /* Variables */
 const PRODUCTS_NUM_PER_PAGE = 4; // 한 페이지에 표시되는 데이터 수
+const PAGE_NUMBER_HIGHLIGHT_CLASSNAME = "app__products__page-number--highlight"; // css 파일에서 페이지 넘버 강조 스타일이 적용된 클래스 네임
 let currentPageNumber = 1; // 현재 페이지 - default = page 1
 
 /* Function */
@@ -49,7 +50,7 @@ const toggleHighlightPageNumber = (pageNumber) => {
   const pageNumbers = Array.from(document.querySelector(".app__products__page-numbers").children); // 페이지네이션
 
   const currPageNumber = pageNumbers[pageNumber - 1]; // 현재 페이지 인덱스는 입력한 페이지 숫자 인수의 - 1
-  currPageNumber.classList.toggle("app__products__page-number--highlight");
+  currPageNumber.classList.toggle(PAGE_NUMBER_HIGHLIGHT_CLASSNAME);
 };
 
 const putProductsList = (pageNum) => {
@@ -69,20 +70,22 @@ const putProductsList = (pageNum) => {
   toggleHighlightPageNumber(currentPageNumber); // 현재 페이지 강조 on
 };
 
-const handlePageClick = (e) => {
-  const clickedPageNumber = e.target;
-  if (clickedPageNumber.tagName !== "LI" || clickedPageNumber.textContent == currentPageNumber)
-    return; // 클릭된게 번호가 아니거나 현재 페이지의 번호라면 종료
+const handlePaginationBtnsClick = (e) => {
+  const clickedBtn = e.target;
 
-  putProductsList(clickedPageNumber);
+  if (clickedBtn.tagName === "svg") console.log("clicked move button!");
+
+  if (clickedBtn.tagName !== "LI" || clickedBtn.textContent == currentPageNumber) return; // 클릭된게 번호가 아니거나 현재 페이지의 번호라면 종료
+
+  putProductsList(clickedBtn);
 };
 
 const getPageData = () => {
   toggleHighlightPageNumber(currentPageNumber); // 웹 페이지 최초 접속시에 현재 페이지 강조
   putProductsList(currentPageNumber); // 웹페이지 최초 접속시에 데이터 불러오기
 
-  const pageNumbers = document.querySelector(".app__products__page-numbers"); // 페이지네이션
-  pageNumbers.addEventListener("click", handlePageClick, false); // 페이지네이션의 숫자 클릭시에 해당 페이지의 데이터 호출
+  const paginationBtns = document.querySelector(".app__products__inner-paging"); // 페이지네이션
+  paginationBtns.addEventListener("click", handlePaginationBtnsClick, false); // 페이지네이션의 버튼 클릭시에 그에 맞는 데이터 호출
 };
 
 /* export */

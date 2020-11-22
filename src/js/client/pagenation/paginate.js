@@ -43,20 +43,22 @@ const putProductsList = (pageNum) => {
   toggleHighlightPageNumber(currentPageNumber); // 현재 페이지 강조 on
 };
 
-const handlePageClick = (e) => {
-  const clickedPageNumber = e.target;
-  if (clickedPageNumber.tagName !== "LI" || clickedPageNumber.textContent == currentPageNumber)
-    return; // 클릭된게 번호가 아니거나 현재 페이지의 번호라면 종료
+const handlePaginationBtnsClick = (e) => {
+  const clickedBtn = e.target;
 
-  putProductsList(clickedPageNumber);
+  if (clickedBtn.tagName === "svg") console.log("clicked move button!");
+
+  if (clickedBtn.tagName !== "LI" || clickedBtn.textContent == currentPageNumber) return; // 클릭된게 번호가 아니거나 현재 페이지의 번호라면 종료
+
+  putProductsList(clickedBtn);
 };
 
 const getPageData = () => {
   toggleHighlightPageNumber(currentPageNumber); // 웹 페이지 최초 접속시에 현재 페이지 강조
   putProductsList(currentPageNumber); // 웹페이지 최초 접속시에 데이터 불러오기
 
-  const pageNumbers = document.querySelector(".app__products__page-numbers"); // 페이지네이션
-  pageNumbers.addEventListener("click", handlePageClick, false); // 페이지네이션의 숫자 클릭시에 해당 페이지의 데이터 호출
+  const paginationBtns = document.querySelector(".app__products__inner-paging"); // 페이지네이션
+  paginationBtns.addEventListener("click", handlePaginationBtnsClick, false); // 페이지네이션의 버튼 클릭시에 그에 맞는 데이터 호출
 };
 
 /* export */
