@@ -7,7 +7,7 @@ const process = require("./_process.js"); // 파싱된 json 데이터를 가공�
 
 /* Constants */
 const PRODUCTS_NUM_PER_PAGE = 4; // 한 페이지에 표시되는 데이터 수
-const PAGE_CNT = Math.ceil(TOTAL / PRODUCTS_NUM_PER_PAGE); // 전체 페이지 수
+const LAST_PAGE = Math.ceil(TOTAL / PRODUCTS_NUM_PER_PAGE); // 전체 페이지 수
 
 /* Global Variables */
 const pagination = document.body.querySelector(".app__products__inner-paging"); // 페이지네이션 버튼들을 자식으로 가진 element
@@ -28,7 +28,7 @@ const toggleDisplayMoveBtns = () => {
   else leftBtn.classList.remove("app__products__page-btn--disabled");
 
   const rightBtn = document.body.querySelector(".app__products__page-btn--right");
-  if (currentPageNumber == PAGE_CNT) rightBtn.classList.add("app__products__page-btn--disabled");
+  if (currentPageNumber == LAST_PAGE) rightBtn.classList.add("app__products__page-btn--disabled");
   else rightBtn.classList.remove("app__products__page-btn--disabled");
 };
 
@@ -57,55 +57,90 @@ const putProductsList = (pageNum) => {
 };
 
 const turnPage = (clickedBtn) => {
+  // | < 1 2 3 4 5 > | 같이 5개 버튼을 가진 페이지 네이션이 있다고 할 때,
+  // 이 페이지의 버튼 개수는 5개, 초기 '중간 위치 이후 번호'는 3이라 한다. (중간 위치 이후 번호는 아래부터 중간 번호라고 칭한다)
+  // 이 페이지 네이션의 페이지 전체 개수가 25개 라고 가정할 때,
+  // 다음과 같이 동작하도록 구현한다.
+  // 기본적으로는 클릭한 숫자가 가운데로 오게 하며, 아래와 같은 경우는 예외로 한다.
+  // 현재 페이지가 1, 2, 3 인 경우엔 1이 페이지네이션을 | < 1 2 3 4 5 > | 로 고정한다. (숫자 클릭시에 음수로 가지 않게 설정한다)
+  // 현재 페이지가 25, 24, 23 인 경우엔, | < 21 22 23 24 25 > | 로 고정한다. (숫자 클릭시에 최대 페이지 수를 초과하지 않도록 설정한다)
+
   const numBtnCnt = pageNumbers.length; // 숫자 버튼의 개수
+  const nums = pageNumbers.map((pagenum) => parseInt(pagenum.textContent)); // 숫자 버튼의 숫자 목록
 
-  const midNext = // 숫자 버튼을 리스트 중 가운데 위치의 다음 숫자 인덱스는
-    numBtnCnt % 2 === 0 // 숫자 버튼 개수가 짝수면
-      ? Math.ceil(numBtnCnt / 2) // 가운데가 공백이므로 다음은 가운데 이후 1번째 숫자 (인덱스를 구하는 거라 +1가 아닌 -1)
-      : Math.ceil(numBtnCnt / 2) - 1; // 숫자 버튼 개수가 홀수면 가운데가 숫자이므로 가운데 이후 0번째 숫자 (인덱스를 구하는 거라 0이 아닌 -1)
+  const center = Math.ceil(numBtnCnt / 2) - 1; // 숫자 버튼을 리스트 중 가운데 번호의 인덱스
+  const midPrev = numBtnCnt % 2 === 1 ? center : center - 1; // 정중앙에서 왼쪽 방향으로 가장 먼저 오는 번호의 인덱스
+  const midNext = numBtnCnt % 2 === 1 ? center : center + 1; // 정중앙에서 오른쪽 방향으로 가장 먼저 오는 번호의 인덱스
 
-  const midNextNum = parseInt(pageNumbers[midNext].textContent); // 가운데 위치 바로 이후에 나오는 숫자
-  const firstBtnNum = parseInt(pageNumbers[0].textContent); // 첫번째 숫자 버튼의 숫자
-  const lastBtnNum = parseInt(pageNumbers[numBtnCnt - 1].textContent); // 마지막 숫자 버튼의 숫자
+  const midPrevNum = nums[midPrev]; // 정중앙에서 왼쪽 방향으로 가장 먼저 오는 번호
+  const midNextNum = nums[midNext]; // 정중앙에서 오른쪽 방향으로 가장 먼저 오는 번호
+  const firstBtnNum = nums[0]; // 첫번째 숫자 버튼의 숫자
+  const lastBtnNum = nums[numBtnCnt - 1]; // 마지막 숫자 버튼의 숫자
 
   const changePageNumsValue = (num) => {
-    pageNumbers.forEach((pageNum) => {
-      pageNum.textContent = parseInt(pageNum.textContent) + num;
-    });
+    // 전달된 숫자만큼 페이지네이션 번호 전체를 더하는 함수 ( 음수 전달시 뺄셈이 됨 )
+    if (firstBtnNum + num < 1) {
+      // 계산결과 첫번째 버튼이 페이지 1 아래로 내려가려 한다면
+      pageNumbers.forEach((pageNum, i) => (pageNum.textContent = i + 1));
+      // ( ex - | < 1 2 3 4 5 > | ) 첫 페이지에 고정하고 종료
+      return;
+    } //
+    else if (lastBtnNum + num > LAST_PAGE) {
+      // 계산결과 마지막 버튼이 최종 페이지보다 위로 올라가려 한다면
+      pageNumbers.forEach((pageNum, i) => (pageNum.textContent = LAST_PAGE - numBtnCnt + i + 1));
+      // ( ex - | < 21 22 23 24 25 > | ) 최종 페이지에 고정하고 종료
+      return;
+    } //
+    else {
+      // 계산 결과에 문제가 없다면
+      // 전달된 숫자만큼 페이지네이션 번호 전체를 더하거나 빼기
+      pageNumbers.forEach((pageNum) => {
+        pageNum.textContent = parseInt(pageNum.textContent) + num;
+      });
+    }
   };
 
   switch (clickedBtn.textContent) {
-    case "이전 페이지":
-      if (firstBtnNum !== 1 && currentPageNumber <= midNextNum) {
-        // 처음 버튼의 숫자가 1이 아니고
-        // 현재 페이지 번호가 가운데 다음 숫자보다 작거나 같은 경우에만 모든 페이지 번호를 -1
+    case "이전 페이지": // < 버튼 일때
+      if (firstBtnNum !== 1 && currentPageNumber <= midPrevNum) {
+        // 처음 버튼이 1이 아니고
+        // 현재 페이지 번호가 가운데 숫자보다 작거나 같은 경우에만 모든 페이지 번호를 -1
+        // (번호 개수가 짝수일땐 가운데 이전 숫자)
         changePageNumsValue(-1);
       }
-      currentPageNumber--;
+      currentPageNumber--; // 전역변수 currentPageNumber를 -1
       break;
-    case "다음 페이지":
-      if (lastBtnNum !== PAGE_CNT && currentPageNumber >= midNextNum) {
-        // 마지막 버튼의 숫자가 마지막 페이지가 아니고
-        // 현재 페이지 번호가 가운데 다음 숫자보다 크거나 같은 경우에만 모든 페이지 번호를 +1
+
+    case "다음 페이지": // > 버튼 일때
+      if (lastBtnNum !== LAST_PAGE && currentPageNumber >= midNextNum) {
+        // 마지막 버튼이 마지막 페이지의 번호가 아니고
+        // 현재 페이지 번호가 가운데 숫자보다 크거나 같은 경우에만 모든 페이지 번호를 +1
+        // (번호 개수가 짝수일땐 가운데 다음 숫자)
         changePageNumsValue(+1);
       }
-      currentPageNumber++;
+      currentPageNumber++; // 전역변수 currentPageNumber를 +1
       break;
-    default:
-      // 숫자 버튼일 경우에
-      const clickedNum = parseInt(clickedBtn.textContent); // 클릭한 숫자버튼의 숫자
-      const diff = clickedNum - currentPageNumber; // 현재 페이지와의 차이
 
-      if (diff < 0) {
-        if (firstBtnNum !== 1 && currentPageNumber <= midNextNum) {
-          changePageNumsValue(diff);
-        }
-      } else if (diff > 0) {
-        if (lastBtnNum !== PAGE_CNT && currentPageNumber >= midNextNum) {
-          changePageNumsValue(diff);
-        }
-      }
-      currentPageNumber += diff;
+    default:
+      // 숫자 버튼일때
+      const clickedNum = parseInt(clickedBtn.textContent); // 클릭한 숫자버튼의 숫자
+      const diff = clickedNum - currentPageNumber; // 클릭한 숫자와 현재 페이지와의 차이
+
+      changePageNumsValue(clickedNum - midNextNum); // (클릭한 숫자 - midNextNum) 만큼 모든 페이지 번호를 변경.
+      // < 1 2 3 4 5 > 를 예로 들면, midNextNum은 3이 나옴
+      // 1. < 1 2 >
+      // < 1 2 > 를 클릭하면 (클릭한 숫자 - midNextNum) 가 음수가 나오는데,
+      // 전달된 숫자만큼 전체 페이지를 이동시키는 changePageNumsValue 에서 페이지를 1 밑으로 떨어뜨릴 수 없게 제어함
+      // 페이지 목록이 < 1 2 3 4 5 > 로 유지됨
+      // 2. < 3 >
+      // < 3 > 을 클릭하면 (클릭한 숫자 - midNextNum) 는 0.
+      // 페이지 목록이 < 1 2 3 4 5 > 로 유지됨
+      // 3. < 4 5 >
+      // < 4 5 > 를 클릭하면 (클릭한 숫자 - midNextNum) 는 양수가 되고,
+      // changePageNumsValue 에서 전달된 숫자만큼 전체 페이지 목록을 변경시켜서
+      // 클릭한 숫자가 목록의 가운데 오게 만듬
+
+      currentPageNumber += diff; // 전역변수 currentPageNumber를 클릭한 숫자와 현재 페이지와의 차이만큼 변경
   }
 };
 
@@ -117,7 +152,7 @@ const handlePaginationBtnsClick = (e) => {
   if (clickedBtn.tagName === "path") clickedBtn = e.target.closest("svg"); // 클릭된 것이 svg의 path라면 svg로 이벤트 타겟 변경
 
   toggleHighlightCurrPageNum(); // 이전 페이지 번호 강조 off
-  turnPage(clickedBtn); // 현재 페이지 번호 변경 (currentPageNumber 변경)
+  turnPage(clickedBtn); // 페이지 넘기기 (currentPageNumber 변경)
   putProductsList(currentPageNumber); // 변경한 currentPageNumber로 그에 맞는 데이터 불러오기
   toggleHighlightCurrPageNum(); // 현재 페이지 번호 강조 on
   toggleDisplayMoveBtns(); // 만약 현재 페이지가 1페이지면 < 버튼, 마지막 페이지면 > 버튼 삭제
