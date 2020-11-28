@@ -1,5 +1,5 @@
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
-const getData = require("./pagenation/paginate.js");
+const getData = require('./pagenation/paginate.js');
 
 window.onload = () => {
   getData();
@@ -7,15 +7,15 @@ window.onload = () => {
 
 },{"./pagenation/paginate.js":3}],2:[function(require,module,exports){
 // index.html 파일 기준 이미지 디렉터리 경로
-const IMG_DIR_PATH = "./src/img/";
+const IMG_DIR_PATH = './src/img/';
 
 // 클라이언트 단에서 표시되는 데이터의 형식
 const dataToElement = (dataObj) => {
   return `
-  <li class="app__products__item">
-    <section class="app__products__item__image" style="background-image: url(${IMG_DIR_PATH}${dataObj.color}_${dataObj.category[0]}.png);"></section>
-    <section class="app__products__item__desc">
-      <section class="app_products__item__name app_products__item__gender-size">${dataObj.gender}, ${dataObj.size}</section>
+  <li class='app__products__item'>
+    <section class='app__products__item__image' style='background-image: url(${IMG_DIR_PATH}${dataObj.color}_${dataObj.category[0]}.png);'></section>
+    <section class='app__products__item__desc'>
+      <section class='app_products__item__name app_products__item__gender-size'>${dataObj.gender}, ${dataObj.size}</section>
       <section>${dataObj.color} ${dataObj.material} ${dataObj.category}</section>
     </section>
   </li>
@@ -29,16 +29,16 @@ module.exports = dataToElement;
 /* 클라이언트 단에서 현재 페이지 넘버와 함께 데이터를 요청하는 부분을 가정한 구현 */
 /* --------------------------------------------------------------------------------------- */
 /* Module */
-const { request, TOTAL } = require("../../fakeServer/fakeServer.js"); // 현재 페이지의 상품 데이터를 가져올 수 있는 험수 request(), 상품 데이터 전체 개수 TOTAL
-const process = require("./_process.js"); // 파싱된 json 데이터를 가공하여 node element로 반환하는 함수 process()
+const { request, TOTAL } = require('../../fakeServer/fakeServer.js'); // 현재 페이지의 상품 데이터를 가져올 수 있는 험수 request(), 상품 데이터 전체 개수 TOTAL
+const process = require('./_process.js'); // 파싱된 json 데이터를 가공하여 node element로 반환하는 함수 process()
 
 /* Constants */
 const PRODUCTS_NUM_PER_PAGE = 4; // 한 페이지에 표시되는 데이터 수
 const LAST_PAGE = Math.ceil(TOTAL / PRODUCTS_NUM_PER_PAGE); // 전체 페이지 수
 
 /* Global Variables */
-const pagination = document.body.querySelector(".app__products__inner-paging"); // 페이지네이션 버튼들을 자식으로 가진 element
-const pageNumbers = Array.from(pagination.querySelector(".app__products__page-numbers").children); // 페이지네이션의 숫자 버튼들
+const pagination = document.body.querySelector('.app__products__inner-paging'); // 페이지네이션 버튼들을 자식으로 가진 element
+const pageNumbers = Array.from(pagination.querySelector('.app__products__page-numbers').children); // 페이지네이션의 숫자 버튼들
 
 let currentPageNumber = 1; // 현재 페이지 - default = page 1
 
@@ -50,26 +50,26 @@ const getProductsData = (pageNumber) => {
 };
 
 const toggleDisplayMoveBtns = () => {
-  const leftBtn = document.body.querySelector(".app__products__page-btn--left");
-  if (currentPageNumber == 1) leftBtn.classList.add("app__products__page-btn--disabled");
-  else leftBtn.classList.remove("app__products__page-btn--disabled");
+  const leftBtn = document.body.querySelector('.app__products__page-btn--left');
+  if (currentPageNumber == 1) leftBtn.classList.add('app__products__page-btn--disabled');
+  else leftBtn.classList.remove('app__products__page-btn--disabled');
 
-  const rightBtn = document.body.querySelector(".app__products__page-btn--right");
-  if (currentPageNumber == LAST_PAGE) rightBtn.classList.add("app__products__page-btn--disabled");
-  else rightBtn.classList.remove("app__products__page-btn--disabled");
+  const rightBtn = document.body.querySelector('.app__products__page-btn--right');
+  if (currentPageNumber == LAST_PAGE) rightBtn.classList.add('app__products__page-btn--disabled');
+  else rightBtn.classList.remove('app__products__page-btn--disabled');
 };
 
 const toggleHighlightCurrPageNum = () => {
   pageNumbers.forEach((pageNum) => {
     if (pageNum.textContent == currentPageNumber)
-      pageNum.classList.toggle("app__products__page-number--highlight"); // css 파일에서 페이지 넘버 강조 스타일이 적용된 클래스 네임
+      pageNum.classList.toggle('app__products__page-number--highlight'); // css 파일에서 페이지 넘버 강조 스타일이 적용된 클래스 네임
   });
 };
 
 const putProductsList = (pageNum) => {
-  const productsList = document.body.querySelector(".app__products__list"); // 상품리스트
+  const productsList = document.body.querySelector('.app__products__list'); // 상품리스트
 
-  productsList.innerHTML = ""; // 상품리스트 초기화
+  productsList.innerHTML = ''; // 상품리스트 초기화
 
   currentPageNumber = !isNaN(pageNum) // 클릭한 페이지 번호로 전역변수 currentPageNumber를 설정하는데,
     ? pageNum // pageNum가 숫자라면 그대로,
@@ -128,7 +128,7 @@ const turnPage = (clickedBtn) => {
   };
 
   switch (clickedBtn.textContent) {
-    case "이전 페이지": // < 버튼 일때
+    case '이전 페이지': // < 버튼 일때
       if (firstBtnNum !== 1 && currentPageNumber <= midPrevNum) {
         // 처음 버튼이 1이 아니고
         // 현재 페이지 번호가 가운데 숫자보다 작거나 같은 경우에만 모든 페이지 번호를 -1
@@ -138,7 +138,7 @@ const turnPage = (clickedBtn) => {
       currentPageNumber--; // 전역변수 currentPageNumber를 -1
       break;
 
-    case "다음 페이지": // > 버튼 일때
+    case '다음 페이지': // > 버튼 일때
       if (lastBtnNum !== LAST_PAGE && currentPageNumber >= midNextNum) {
         // 마지막 버튼이 마지막 페이지의 번호가 아니고
         // 현재 페이지 번호가 가운데 숫자보다 크거나 같은 경우에만 모든 페이지 번호를 +1
@@ -174,9 +174,9 @@ const turnPage = (clickedBtn) => {
 const handlePaginationBtnsClick = (e) => {
   let clickedBtn = e.target;
 
-  if (clickedBtn.tagName === "UL") return; // 클릭된 것이 버튼이 아닌 여백 공간이라면 종료
-  if (clickedBtn.tagName === "LI" && clickedBtn.textContent == currentPageNumber) return; // 클릭된 것이 현재 페이지 번호일땐 종료
-  if (clickedBtn.tagName === "path") clickedBtn = e.target.closest("svg"); // 클릭된 것이 svg의 path라면 svg로 이벤트 타겟 변경
+  if (clickedBtn.tagName === 'UL') return; // 클릭된 것이 버튼이 아닌 여백 공간이라면 종료
+  if (clickedBtn.tagName === 'LI' && clickedBtn.textContent == currentPageNumber) return; // 클릭된 것이 현재 페이지 번호일땐 종료
+  if (clickedBtn.tagName === 'path') clickedBtn = e.target.closest('svg'); // 클릭된 것이 svg의 path라면 svg로 이벤트 타겟 변경
 
   toggleHighlightCurrPageNum(); // 이전 페이지 번호 강조 off
   turnPage(clickedBtn); // 페이지 넘기기 (currentPageNumber 변경)
@@ -190,7 +190,7 @@ const getPageData = () => {
   toggleHighlightCurrPageNum(); // 웹 페이지 최초 접속시에 현재 페이지 강조
   putProductsList(currentPageNumber); // 웹페이지 최초 접속시에 데이터 불러오기
 
-  pagination.addEventListener("click", handlePaginationBtnsClick, false); // 페이지네이션의 버튼 클릭시에 그에 맞는 데이터 호출
+  pagination.addEventListener('click', handlePaginationBtnsClick, false); // 페이지네이션의 버튼 클릭시에 그에 맞는 데이터 호출
 };
 
 /* export */
@@ -199,7 +199,7 @@ module.exports = getPageData;
 },{"../../fakeServer/fakeServer.js":6,"./_process.js":2}],4:[function(require,module,exports){
 /* 상품 옵션을 받아서 랜덤 데이터 생성 */
 // TODO: 특정 버튼을 눌렀을때만 새로운 데이터를 생성하도록 변경하기 (현재는 새로고침 할때마다 데이터가 변경되어버림)
-const productsOptions = require("./_productsOptions.js");
+const productsOptions = require('./_productsOptions.js');
 
 const NUMBER_OF_PRODUCTS = 100; // 제품 데이터는 100개로 설정
 
@@ -243,11 +243,11 @@ module.exports = fakeProductsData;
 // material - smooth, tough
 // color - blue, yellow, pink
 const productsOptions = {
-  gender: ["man", "female"],
-  category: ["t-shirt", "pants", "skirt"],
-  size: ["small", "big"],
-  material: ["smooth", "tough"],
-  color: ["blue", "yellow", "pink"],
+  gender: ['man', 'female'],
+  category: ['t-shirt', 'pants', 'skirt'],
+  size: ['small', 'big'],
+  material: ['smooth', 'tough'],
+  color: ['blue', 'yellow', 'pink'],
 };
 
 module.exports = productsOptions;
@@ -256,7 +256,7 @@ module.exports = productsOptions;
 /* --------------------------------------------------------------------------------------- */
 /* 서버단에서 현재 페이지 넘버에 따라 DB에서 데이터를 가져와서 응답하는 부분을 가정한 구현 */
 /* --------------------------------------------------------------------------------------- */
-const DB = require("./_createFakeData.js"); // 가상 데이터 객체를 DataBase 라고 가정
+const DB = require('./_createFakeData.js'); // 가상 데이터 객체를 DataBase 라고 가정
 const TOTAL = DB.length;
 
 const reqCurrentPageData = (currPage, dataNumPerPage) => {
