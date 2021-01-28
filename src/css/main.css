@@ -51,6 +51,7 @@ body {
   justify-content: center;
   align-items: center;
   width: 100%;
+  pointer-events: none;
 }
 
 .app__main-logo__image {
@@ -180,6 +181,7 @@ body {
   height: 2em;
   margin: 0 0.2em;
   background: center/100% no-repeat;
+  cursor: not-allowed;
 }
 
 .app__select-color__image--t-shirt {
