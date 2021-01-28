@@ -175,9 +175,13 @@ const handlePaginationBtnsClick = (e) => {
 
 const setColor = (color) => {
   currentColor = color;
+
+  // 이미지 디렉터리 경로
+  const IMG_DIR_PATH = 'https://bear-bear-bear.github.io/minimi-shopping-web/src/img';
+
   imagesWrap.forEach((imageElem, idx) => {
     const categorys = ['t', 'p', 's']; // 티셔츠, 팬츠, 스커트. 의존성 대박..
-    imageElem.style.backgroundImage = `url(/src/img/${color}_${categorys[idx]}.png)`;
+    imageElem.style.backgroundImage = `url(${IMG_DIR_PATH}/${color}_${categorys[idx]}.png)`;
   });
 };
 

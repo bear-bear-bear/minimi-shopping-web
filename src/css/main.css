@@ -185,15 +185,15 @@ body {
 }
 
 .app__select-color__image--t-shirt {
-  background-image: url(/src/img/blue_t.png);
+  background-image: url(../img/blue_t.png);
 }
 
 .app__select-color__image--pants {
-  background-image: url(/src/img/yellow_p.png);
+  background-image: url(../img/yellow_p.png);
 }
 
 .app__select-color__image--skirt {
-  background-image: url(/src/img/pink_s.png);
+  background-image: url(../img/pink_s.png);
 }
 
 .app__select-color__color-box {
