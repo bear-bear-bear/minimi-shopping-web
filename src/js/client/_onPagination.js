@@ -4,6 +4,7 @@
 /* Module */
 import { request, TOTAL } from '../fakeServer/fakeServer.js'; // 현재 페이지의 상품 데이터를 가져올 수 있는 험수 request(), 상품 데이터 전체 개수 TOTAL
 import process from './_process.js'; // 파싱된 json 데이터를 가공하여 node element로 반환하는 함수 process()
+import preloadImages from './_preloadImages.js'; // 이미지 프리로딩
 
 /* Constants */
 const PRODUCTS_NUM_PER_PAGE = 4; // 한 페이지에 표시되는 데이터 수
@@ -203,6 +204,7 @@ const handleColorBtnsClick = (e) => {
 };
 
 const onPagination = () => {
+  preloadImages(); // 웹 페이지 최초 접속시에 이미지 프리로딩
   toggleDisplayMoveBtns(); // 웹 페이지 최초 접속시에 < , > 버튼 삭제 판별 (1페이지 혹은 마지막 페이지 일때)
   toggleHighlightCurrPageNum(); // 웹 페이지 최초 접속시에 현재 페이지 강조
   putProductsList(currentPageNumber); // 웹페이지 최초 접속시에 데이터 불러오기
