@@ -1,0 +1,21 @@
+{
+  "name": "minimi-shopping-web",
+  "version": "1.0.0",
+  "description": "SPA pagination with banila JS",
+  "main": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bear-bear-bear/minimi-shopping-web.git"
+  },
+  "author": "bear-bear-bear",
+  "license": "ISC",
+  "homepage": "https://bear-bear-bear.github.io/minimi-shopping-web/",
+  "devDependencies": {
+    "@babel/core": "^7.11.6",
+    "@babel/preset-env": "^7.11.5",
+    "babel-loader": "^8.2.2"
+  }
+}
