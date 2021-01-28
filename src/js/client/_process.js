@@ -3,6 +3,7 @@ const IMG_DIR_PATH = './src/img/';
 
 // 클라이언트 단에서 표시되는 데이터의 형식
 const dataToElement = (dataObj) => {
+  if (!Boolean(dataObj)) return '';
   return `
 <li class='app__products__item'>
   <section class='app__products__item__image' style='background-image: url(${IMG_DIR_PATH}${dataObj.color}_${dataObj.category[0]}.png);'></section>

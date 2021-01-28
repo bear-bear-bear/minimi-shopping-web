@@ -1,3 +1,3 @@
-import getData from './pagenation/paginate.js';
+import onPagination from './_onPagination.js';
 
-document.addEventListener('DOMContentLoaded', getData, false);
+document.addEventListener('DOMContentLoaded', onPagination, false);

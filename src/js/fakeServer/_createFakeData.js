@@ -31,10 +31,20 @@ const createFakeData = (options) => {
   }
 };
 
-const fakeProductsData = [];
+const DB = [];
 
 for (let i = 0; i < NUMBER_OF_PRODUCTS; i++) {
-  fakeProductsData.push(createFakeData(productsOptions));
+  const data = createFakeData(productsOptions);
+
+  DB.push(data);
 }
 
-export default fakeProductsData;
+const returnData = (color = null) => {
+  if (!Boolean(color)) {
+    return DB;
+  } else {
+    return DB.filter((data) => data.color === color);
+  }
+};
+
+export { DB, returnData };
