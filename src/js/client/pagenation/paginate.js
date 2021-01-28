@@ -2,8 +2,8 @@
 /* 클라이언트 단에서 현재 페이지 넘버와 함께 데이터를 요청하는 부분을 가정한 구현 */
 /* --------------------------------------------------------------------------------------- */
 /* Module */
-const { request, TOTAL } = require('../../fakeServer/fakeServer.js'); // 현재 페이지의 상품 데이터를 가져올 수 있는 험수 request(), 상품 데이터 전체 개수 TOTAL
-const process = require('./_process.js'); // 파싱된 json 데이터를 가공하여 node element로 반환하는 함수 process()
+import { request, TOTAL } from '../../fakeServer/fakeServer.js'; // 현재 페이지의 상품 데이터를 가져올 수 있는 험수 request(), 상품 데이터 전체 개수 TOTAL
+import process from './_process.js'; // 파싱된 json 데이터를 가공하여 node element로 반환하는 함수 process()
 
 /* Constants */
 const PRODUCTS_NUM_PER_PAGE = 4; // 한 페이지에 표시되는 데이터 수
@@ -167,4 +167,4 @@ const getPageData = () => {
 };
 
 /* export */
-module.exports = getPageData;
+export default getPageData;

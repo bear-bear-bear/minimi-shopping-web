@@ -14,4 +14,4 @@ const dataToElement = (dataObj) => {
   `.trim();
 };
 
-module.exports = dataToElement;
+export default dataToElement;

@@ -1,7 +1,7 @@
 /* --------------------------------------------------------------------------------------- */
 /* 서버단에서 현재 페이지 넘버에 따라 DB에서 데이터를 가져와서 응답하는 부분을 가정한 구현 */
 /* --------------------------------------------------------------------------------------- */
-const DB = require('./_createFakeData.js'); // 가상 데이터 객체를 DataBase 라고 가정
+import DB from './_createFakeData.js'; // 가상 데이터 객체를 DataBase 라고 가정
 const TOTAL = DB.length;
 
 const reqCurrentPageData = (currPage, dataNumPerPage) => {
@@ -18,5 +18,6 @@ const reqCurrentPageData = (currPage, dataNumPerPage) => {
   return JSON.stringify(currentPageData); // 데이터 json 형식으로 반환
 };
 
-module.exports.request = reqCurrentPageData; // 데이터를 가져올 수 있는 함수를 클라이언트에서 쓸 수 있도록 전달
-module.exports.TOTAL = TOTAL; // 데이터의 총 개수를 클라이언트에서 쓸 수 있도록 전달
+// reqCurrentPageData => 데이터를 가져올 수 있는 함수를 클라이언트에서 쓸 수 있도록 전달
+// TOTAL => 데이터의 총 개수를 클라이언트에서 쓸 수 있도록 전달
+export { reqCurrentPageData as request, TOTAL };

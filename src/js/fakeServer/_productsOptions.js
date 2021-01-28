@@ -11,4 +11,4 @@ const productsOptions = {
   color: ['blue', 'yellow', 'pink'],
 };
 
-module.exports = productsOptions;
+export default productsOptions;
