@@ -221,6 +221,12 @@ table {
   }
 }
 
+@media (max-width: 1023px) {
+  .back-logo {
+    display: none;
+  }
+}
+
 .app {
   position: absolute;
   top: 50%;
@@ -796,6 +802,7 @@ body {
 }
 
 body {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
