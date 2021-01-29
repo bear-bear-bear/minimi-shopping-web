@@ -1,6 +1,6 @@
 # minimi-shopping-web    
     
-바닐라 js를 사용하여 페이지 네이션 구현         
+바닐라 js를 사용한 페이지네이션 구현         
     
 <img src="https://github.com/bear-bear-bear/minimi-shopping-web/blob/master/src/img/preview.PNG" width="100%">
             
