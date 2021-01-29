@@ -621,7 +621,7 @@ table {
   row-gap: 2rem;
   padding: 1rem;
   border-radius: 1rem;
-  background-color: var(--white);
+  background: white;
   z-index: 9999;
 }
 
@@ -677,6 +677,7 @@ table {
   font-weight: 700;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
+  background: white;
 }
 
 .modal__close-btn:hover,
