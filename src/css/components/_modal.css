@@ -1,0 +1,79 @@
+.modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-rows: [image]1.8fr [infos]fit-content(100%) [close-btn]1fr;
+  row-gap: 2rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  background-color: var(--white);
+  z-index: 9999;
+}
+
+.modal__image-wrap {
+  justify-self: center;
+  align-self: flex-end;
+  width: 20vw;
+  height: 20vw;
+  min-width: 8rem;
+  min-height: 8rem;
+  max-width: 10rem;
+  max-height: 10rem;
+}
+
+.modal__image {
+  width: 100%;
+  height: 100%;
+  background: center/100% no-repeat;
+}
+
+.modal__infos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.modal__info {
+}
+
+.modal__info__text {
+  line-height: 1.2;
+  text-transform: capitalize;
+  color: var(--black);
+}
+
+.modal__info__text--name {
+  font-size: 1.66rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.modal__close-btn-wrap {
+  display: flex;
+  justify-content: center;
+}
+
+.modal__close-btn {
+  width: 10rem;
+  height: 3rem;
+  border: 0.1rem solid var(--black);
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.modal__close-btn:hover,
+.modal__close-btn:focus {
+  background-color: var(--black);
+  color: var(--white);
+}
+
+@media screen and (max-width: 1024px) {
+  .modal {
+    grid-template-rows: [image]1.5fr [infos]fit-content(100%) [close-btn]1fr;
+  }
+}
