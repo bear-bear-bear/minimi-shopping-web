@@ -77,14 +77,37 @@
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
 /******/
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "";
+/******/ 	__webpack_require__.p = "../";
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./src/js/client/client.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./entry.js");
 /******/ })
 /************************************************************************/
 /******/ ({
+
+/***/ "./entry.js":
+/*!******************!*\
+  !*** ./entry.js ***!
+  \******************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _src_js_client_main_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./src/js/client/main.js */ \"./src/js/client/main.js\");\n/* harmony import */ var _src_css_main_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./src/css/main.css */ \"./src/css/main.css\");\n/* harmony import */ var _src_css_main_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_src_css_main_css__WEBPACK_IMPORTED_MODULE_1__);\n// js entry\n // css entry\n\n\n\n//# sourceURL=webpack:///./entry.js?");
+
+/***/ }),
+
+/***/ "./src/css/main.css":
+/*!**************************!*\
+  !*** ./src/css/main.css ***!
+  \**************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("// extracted by mini-css-extract-plugin\n\n//# sourceURL=webpack:///./src/css/main.css?");
+
+/***/ }),
 
 /***/ "./src/js/client/_onPagination.js":
 /*!****************************************!*\
@@ -134,15 +157,15 @@ eval("__webpack_require__.r(__webpack_exports__);\n// index.html 파일 기준 �
 
 /***/ }),
 
-/***/ "./src/js/client/client.js":
-/*!*********************************!*\
-  !*** ./src/js/client/client.js ***!
-  \*********************************/
+/***/ "./src/js/client/main.js":
+/*!*******************************!*\
+  !*** ./src/js/client/main.js ***!
+  \*******************************/
 /*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _onPagination_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_onPagination.js */ \"./src/js/client/_onPagination.js\");\n/* harmony import */ var _onProductsClickEvent_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_onProductsClickEvent.js */ \"./src/js/client/_onProductsClickEvent.js\");\n\n\n\nvar startApp = function startApp() {\n  Object(_onPagination_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"])();\n  Object(_onProductsClickEvent_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"])();\n};\n\ndocument.addEventListener('DOMContentLoaded', startApp, false);\n\n//# sourceURL=webpack:///./src/js/client/client.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _onPagination_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_onPagination.js */ \"./src/js/client/_onPagination.js\");\n/* harmony import */ var _onProductsClickEvent_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_onProductsClickEvent.js */ \"./src/js/client/_onProductsClickEvent.js\");\n\n\n\nvar startApp = function startApp() {\n  Object(_onPagination_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"])();\n  Object(_onProductsClickEvent_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"])();\n};\n\ndocument.addEventListener('DOMContentLoaded', startApp, false);\n\n//# sourceURL=webpack:///./src/js/client/main.js?");
 
 /***/ }),
 
