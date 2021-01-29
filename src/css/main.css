@@ -5,6 +5,7 @@
 @import './_variables.css';
 
 /* components */
+@import './components/_back-logo.css';
 @import './components/_app.css';
 @import './components/_modal.css';
 
@@ -23,5 +24,6 @@ body {
   justify-content: center;
   align-items: center;
   background: var(--back-color);
+  overflow: hidden;
   font-family: Roboto, sans-serif, Apple SD Gothic Neo;
 }

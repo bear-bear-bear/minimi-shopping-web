@@ -4,7 +4,9 @@
   --pink: #fe8489;
   --white: #f5f5f5;
   --black: #1a1a1a;
-  --back-color: linear-gradient(to right, #ece9e6, #ffffff);
+  --back-color: linear-gradient(to left bottom, #efefef, #ffffff);
 
   --app-height: 700px;
+
+  --anime-time-distance: 0.25s;
 }
