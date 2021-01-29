@@ -1,4 +1,4 @@
-@import './reset.css';
+@import './_reset.css';
 
 :root {
   --white: #f5f5f5;
@@ -291,7 +291,7 @@ body {
   justify-content: center;
 }
 
-.app_products__item__name {
+.app__products__item__name {
   display: flex;
   align-items: center;
   font-size: 0.9em;
