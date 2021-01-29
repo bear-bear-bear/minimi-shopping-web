@@ -672,6 +672,7 @@ table {
   width: 10rem;
   height: 3rem;
   border: 0.1rem solid var(--black);
+  border-radius: 5px;
   font-size: 1rem;
   font-weight: 700;
   cursor: pointer;
@@ -682,6 +683,7 @@ table {
 .modal__close-btn:focus {
   background-color: var(--black);
   color: var(--white);
+  outline: none;
 }
 
 @media screen and (max-width: 1024px) {
