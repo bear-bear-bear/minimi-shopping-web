@@ -1,6 +1,10 @@
 :root {
+  --blue: #54aeef;
+  --yellow: #ffd602;
+  --pink: #fe8489;
   --white: #f5f5f5;
   --black: #1a1a1a;
-  --main-color: linear-gradient(to right, #ece9e6, #ffffff);
+  --back-color: linear-gradient(to right, #ece9e6, #ffffff);
+
   --app-height: 700px;
 }

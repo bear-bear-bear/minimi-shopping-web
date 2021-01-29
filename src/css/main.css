@@ -22,6 +22,6 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: var(--main-color);
+  background: var(--back-color);
   font-family: Roboto, sans-serif, Apple SD Gothic Neo;
 }
