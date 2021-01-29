@@ -1,14 +1,12 @@
-This Project is updating...
-
 # minimi-shopping-web    
     
-쇼핑몰을 표방하는 미니 프로젝트    
+바닐라 js를 사용하여 페이지 네이션 구현         
     
-[바로가기](https://bear-bear-bear.github.io/minimi-shopping-web/)
-
-#### TODO LIST
-> - [X] 색상 선택시에 해당 색상의 상품만 표시하는 기능 구현       
-> - [X] 페이지네이션 5페이지 이후의 이동 구현         
-> - [X] 상품 클릭시의 이벤트 설정 (상품 상세 페이지 추가)     
-> - [X] 배경 꾸미기                 
-> - [ ] 프로젝트 막바지에 애니메이션 다시 on 하기     
+<img src="https://github.com/bear-bear-bear/minimi-shopping-web/blob/master/src/img/preview.png" width="100%">
+            
+- Go to website → [바로가기](https://bear-bear-bear.github.io/minimi-shopping-web/)
+  <br/><br/>
+- 사용된 스택
+  - html
+  - css
+  - js
